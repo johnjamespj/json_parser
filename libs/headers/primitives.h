@@ -71,3 +71,12 @@ void freeHashMap(Hashmap* map);
  * @return int 
  */
 int containsKeyHashMap(Hashmap* map, char* key);
+
+/**
+ * @brief Get the Item At Hash Map object
+ * 
+ * @param map 
+ * @param key 
+ * @return void* 
+ */
+void* getItemAtHashMap(Hashmap* map, char* key);
