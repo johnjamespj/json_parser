@@ -1,3 +1,5 @@
+#include "./avl.h"
+
 /**
  * @brief List struct
  */
@@ -28,3 +30,44 @@ void addToList(List* list, void * data);
  * @param list to be freed
  */
 void freeList(List* list);
+
+/**
+ * @brief Hashmap struct
+ * 
+ */
+typedef struct {
+    int length;
+    Node * _root;
+} Hashmap;
+
+/**
+ * @brief Create a Hash Map object
+ * 
+ * @return Hashmap* 
+ */
+Hashmap* createHashMap();
+
+/**
+ * @brief Added an item the hash map
+ * 
+ * @param map 
+ * @param key 
+ * @param data 
+ */
+void addToHashMap(Hashmap* map, char* key, void * data);
+
+/**
+ * @brief Frees a hashmap
+ * 
+ * @param map 
+ */
+void freeHashMap(Hashmap* map);
+
+/**
+ * @brief Checks if a key is in the hashmap
+ * 
+ * @param map 
+ * @param key 
+ * @return int 
+ */
+int containsKeyHashMap(Hashmap* map, char* key);
