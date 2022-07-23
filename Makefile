@@ -25,3 +25,6 @@ $(TARGET): $(OBJECTS)
 clean:
 	-rm -r ./build/* 
 	-rm -f $(TARGET)
+
+run:
+	$(TARGET)
