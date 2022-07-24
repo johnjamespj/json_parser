@@ -42,7 +42,6 @@ void freeBinaryTree(Node* root) {
 
 Node* rotateLL(Node* root) {
     Node* y = root->left;
-    Node* right = root->right;
 
     root->left = y->right;
     y->right = root;
@@ -62,7 +61,6 @@ Node* rotateLR(Node* root) {
 }
 
 Node* rotateRR(Node* root) {
-    Node* left = root->left;
     Node* y = root->right;
 
     root->right = y->left;
@@ -107,7 +105,6 @@ int treeHeight(Node* root) {
 Node* addToAVLTree(Node* root, Node* newNode){
     int strComp, childIsLeft, gchildIsLeft;
     Node* temp = root;
-    Node *child, *gchild;
 
     if (root == NULL)
         return NULL;
@@ -129,8 +126,6 @@ Node* addToAVLTree(Node* root, Node* newNode){
     if (!isTreeBalanced(root)) {
         childIsLeft = strcmp(root->key, newNode->key) < 0;
         gchildIsLeft = strcmp(childIsLeft ? root->left->key : root->right->key, newNode->key) < 0;
-        child =  childIsLeft ? root->left : root->right;
-        gchild = gchildIsLeft ? child->left : child->right;
 
         if (childIsLeft && gchildIsLeft) {
             temp = rotateLL(root);
