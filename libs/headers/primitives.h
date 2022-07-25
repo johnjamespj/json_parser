@@ -87,3 +87,10 @@ void* getItemAtHashMap(Hashmap* map, char* key);
  * @param map 
  */
 List* getHashMapKeys(Hashmap* map);
+
+/**
+ * @brief Get the HashMap's Values
+ * 
+ * @param map 
+ */
+List* getHashMapValues(Hashmap* map);

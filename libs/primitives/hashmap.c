@@ -42,19 +42,39 @@ void inOrderRead(Node *node, List * list) {
         return;
     }
 
-    inOrderRead(node->left, list);
-    if (node->left) {
-        addToList(list, node->left);
-    }
-
     inOrderRead(node->right, list);
-    if (node->right) {
-        addToList(list, node->right);
-    }
+    addToList(list, node);
+    inOrderRead(node->left, list);
 }
 
 List* getHashMapKeys(Hashmap* map) {
-    List* list = createList();
+    List *keys, *list;
+    Node *node;
+    keys = createList();
+    list = createList();
+
     inOrderRead(map->_root, list);
-    return list;
+    for (int i = 0; i < list->length; i++) {
+        node = (Node*)list->array[i];
+        addToList(keys, node->key);
+    }
+    freeList(list);
+
+    return keys;
+}
+
+List* getHashMapValues(Hashmap* map) {
+    List *keys, *list;
+    Node *node;
+    keys = createList();
+    list = createList();
+
+    inOrderRead(map->_root, list);
+    for (int i = 0; i < list->length; i++) {
+        node = (Node*)list->array[i];
+        addToList(keys, node->value);
+    }
+    freeList(list);
+
+    return keys;
 }
