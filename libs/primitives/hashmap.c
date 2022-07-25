@@ -36,3 +36,25 @@ void* getItemAtHashMap(Hashmap* map, char* key) {
 
     return NULL;
 }
+
+void inOrderRead(Node *node, List * list) {
+    if (node == NULL) {
+        return;
+    }
+
+    inOrderRead(node->left, list);
+    if (node->left) {
+        addToList(list, node->left);
+    }
+
+    inOrderRead(node->right, list);
+    if (node->right) {
+        addToList(list, node->right);
+    }
+}
+
+List* getHashMapKeys(Hashmap* map) {
+    List* list = createList();
+    inOrderRead(map->_root, list);
+    return list;
+}

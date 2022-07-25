@@ -80,3 +80,10 @@ int containsKeyHashMap(Hashmap* map, char* key);
  * @return void* 
  */
 void* getItemAtHashMap(Hashmap* map, char* key);
+
+/**
+ * @brief Get the HashMap's Keys
+ * 
+ * @param map 
+ */
+List* getHashMapKeys(Hashmap* map);
