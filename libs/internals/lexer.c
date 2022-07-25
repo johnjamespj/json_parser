@@ -18,6 +18,8 @@ size_t trim(char *out, size_t len, const char *str);
 
 List* jsonLexer(char * json) {
     List* list = createList();
+    int i = 0;
+    _JsonValueLexer(list, json, &i);
     return list;
 }
 
@@ -158,7 +160,7 @@ void _JsonArrayLexer(List* list, char * json, int * position) {
 
 void _JsonStringLexer(List* list, char * json, int * position) {
     int block, i;
-    char * processed;
+    char *processed, *token;
 
     block = 0;
     i = 0;
@@ -175,7 +177,15 @@ void _JsonStringLexer(List* list, char * json, int * position) {
     processed = (char*) malloc((i) * sizeof(char));
     memcpy(processed, json + 1, i - 1);
     processed[i - 1] = '\0';
-    addToList(list, processed);
+
+    token = (char*) malloc((i + 2) * sizeof(char));
+    token[0] = 0;
+    strcat(token, "\"");
+    strcat(token, processed);
+    free(processed);
+    strcat(token, "\"");
+
+    addToList(list, token);
     *position += 2 + strlen(processed);
 }
 
